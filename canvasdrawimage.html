@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 Multimedia Canvas</title>
+</head>
+
+<body>
+
+	<h1>canvas practice</h1>
+
+	<canvas id="drawCanvas" width="711px" height="400px" style="border: 1px solid #000000">
+		이 문장은 사용자의 웹 브라우저가 canvas 요소를 지원하지 않을 때 나타납니다!
+	</canvas>
+
+    <p> <button onclick="drawImage('/images/tomori1.jpg')">타카츠키 토모리</button> 
+        <button onclick="drawImage('/images/anon1.jpg')">치하야 아논</button>
+        <button onclick="drawImage('/images/taki1.jpg')">시이나 타키</button>
+        <button onclick="drawImage('/images/soyo1.jpg')">나가사키 소요</button>
+        <button onclick="drawImage('/images/rana1.jpg')">카나메 라나</button>
+    </p>
+    <p><button onclick="clearImage()">이미지 지우기</button></p>
+
+    <script>
+        function drawImage(src){
+            var canvas = document.getElementById("drawCanvas");
+            var context = canvas.getContext("2d");
+            var Img = new Image();
+            Img.src = src;
+            Img.onload = function(){
+                context.drawImage(Img, 10, 10, canvas.width-20, canvas.height-20);
+            }
+        }
+        
+        function clearImage(){
+            var canvas = document.getElementById("drawCanvas");
+            canvas.getContext("2d").clearRect(0,0,canvas.width,canvas.height);
+        }
+    </script>
+
+</body>
+
+</html>
